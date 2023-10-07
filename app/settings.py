@@ -12,6 +12,12 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+DB_USER=os.getenv('DB_USER')
+DB_PASS=os.getenv('DB_PASS')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -82,8 +88,8 @@ DATABASES = {
         # 'NAME': BASE_DIR / 'db.sqlite3',
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'carros',
-        'USER': 'pguser',
-        'PASSWORD': 'pgpassword',
+        'USER': DB_USER,
+        'PASSWORD': DB_PASS,
         'HOST': 'localhost',
         'PORT': '5432'
     }
